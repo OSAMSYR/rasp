@@ -20,6 +20,8 @@ class data_make:
 
     def data_min_making(self, dict):
         # dict={name:[data]}
+        self.temp_min=0
+        self.light_min=0
         for name in dict.keys():
             self.temp_min += dict.get(name)[2]
             self.light_min+=dict.get(name)[4]

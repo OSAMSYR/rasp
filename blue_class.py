@@ -19,30 +19,33 @@ class blue_handler:
 
 
     def receive(self, addr):
-    #addr need bdarr
-        recv_data=None
-        sock=None
-        data=""
-        
-        try:
-            sock=BluetoothSocket(RFCOMM )
-            sock.connect((addr,self.port))
-            print("connect %s"%addr)
-            recv_data=""
-            while recv_data == "":
-         
-                recv_data = sock.recv(1024)
-                recv_data= recv_data +sock.recv(1024)
-            print(recv_data)
-        except btcommon.BluetoothError as err:
-            print('An error occurred : %s ' % err)
-            print("Retry %s" %self.progress_check)
-            if self.progress_check>0:
-                self.progress_check -=1
+        valid_check=3
+
+        while valid_check>0:
+
+        #addr need bdarr
+            recv_data=None
+            sock=None
+            data=""
+
+            try:
+                sock=BluetoothSocket(RFCOMM )
+                sock.connect((addr,self.port))
+                print("connect %s"%addr)
+                recv_data=""
+                while recv_data == "":
+
+                    recv_data = sock.recv(1024)
+                    recv_data= recv_data +sock.recv(1024)
+                print(recv_data)
+            except btcommon.BluetoothError as err:
+                print('An error occurred : %s ' % err)
+                print("Retry %s" %valid_check)
+                valid_check-=1
                 sock.close()
-                self.receive(addr)
-        
-        sock.close()
+            if recv_data != None 2**31 <= int("{0:b}".format(int(recv_data)),2)  < 2**32:
+                valid_check=0
+            sock.close()
         return recv_data
     # To do receive, need addr to do it
 
