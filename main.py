@@ -36,7 +36,7 @@ class main:
             data_string=""
             state_string=self.data_handle.state_make(name,self.masked_data.get(name)) + "\n"
             for val in self.masked_data.get(name):
-                data_string=data_string+" " + val
+                data_string=data_string+" " + str(val)
             with open(file_name, "a+") as f:
                 f.write(data_string)
         state_string
@@ -54,8 +54,8 @@ class main:
 
 
 # test code
-# a=main()
-# a.start()
+a=main()
+a.start()
 
 
         
