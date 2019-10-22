@@ -6,6 +6,7 @@ class blue_handler:
         self.socket_list=[]
         self.port=1
         self.target_name="syr"
+        self.progress_check=3
         
     def find(self):
         # syr_1
@@ -22,7 +23,6 @@ class blue_handler:
         recv_data=None
         sock=None
         data=""
-        progress_check=3
         
         try:
             sock=BluetoothSocket(RFCOMM )
@@ -36,12 +36,12 @@ class blue_handler:
             print(recv_data)
         except btcommon.BluetoothError as err:
             print('An error occurred : %s ' % err)
-            print("Retry %s" %progress_check)
-            if progress_check>0:
+            print("Retry %s" %self.progress_check)
+            if self.progress_check>0:
+                self.progress_check -=1
                 sock.close()
                 self.receive(addr)
-            pass
-
+        
         sock.close()
         return recv_data
     # To do receive, need addr to do it
