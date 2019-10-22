@@ -36,7 +36,7 @@ class data_make:
         if abs(list[4]-self.light_min)>self.light_min:
             list[4]= 1 if list[4]-self.light_min >0 else 0
         for data in list:
-            state= state+" "+data
+            state= state+" "+str(data)
         return state
 
 # test code
