@@ -14,7 +14,7 @@ class main:
 
     def initial_process(self):
         #self.blue_handle.find()
-        self.blue_handle.device_list={"SYR_2":"98:D3:71:FD:7C:04","SYR_3":"98:D3:91:FD:84:13"}
+        self.blue_handle.device_list={"SYR_2":"98:D3:71:FD:7C:04","SYR_3":"98:D3:91:FD:84:13","SYRTiger":"98:D3:91:FD:43:61"}
         self.device_addr=self.blue_handle.device_list
         # find complete
 

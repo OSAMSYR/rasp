@@ -22,6 +22,7 @@ class blue_handler:
         recv_data=None
         sock=None
         data=""
+        progress_check=3
         
         try:
             sock=BluetoothSocket(RFCOMM )
@@ -35,6 +36,9 @@ class blue_handler:
             print(recv_data)
         except btcommon.BluetoothError as err:
             print('An error occurred : %s ' % err)
+            print("Retry %s" %progress_check)
+            if progress_check>0:
+                self.find()
             pass
 
         sock.close()
