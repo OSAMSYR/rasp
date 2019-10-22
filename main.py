@@ -28,9 +28,9 @@ class main:
 
     def data_save(self):
         for name in self.device_addr.keys():
-            file_name="/data/"+name+".txt"
-            with open(file_name, "a") as f:
-                f.write(self.masked_data.get(name))
+            file_name="./data/"+name+".txt"
+            with open(file_name, "a+") as f:
+                f.write(str(self.masked_data.get(name)))
 
 
 
@@ -38,8 +38,7 @@ class main:
 
         self.initial_process()
         self.data_processing()
-        self.masked_data()
-
+        self.data_save()
 a=main()
 a.start()
 

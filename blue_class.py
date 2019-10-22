@@ -27,20 +27,19 @@ class blue_handler:
             sock=BluetoothSocket(RFCOMM )
             sock.connect((addr,self.port))
             print("done")
-            data=""
-            recv_data = sock.recv(1024)
-            recv_data= recv_data +sock.recv(1024)
+            recv_data=""
+            while recv_data == "":
+         
+                recv_data = sock.recv(1024)
+                recv_data= recv_data +sock.recv(1024)
             print(recv_data)
         except btcommon.BluetoothError as err:
             print('An error occurred : %s ' % err)
             pass
 
         sock.close()
-        return data
-
+        return recv_data
     # To do receive, need addr to do it
 
 # test
-a=blue_handler()
 
-print(a.receive("98:D3:71:FD:7C:04"))
