@@ -37,7 +37,7 @@ class main:
                 data_string=data_string+" " + str(val)
             with open(file_name, "a+") as f:
                 print(data_string)
-                f.write(data_string)
+                f.write(data_string+"\n")
         with open("./state.txt","w") as f:
             print(state_string)
             f.write(state_string)

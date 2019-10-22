@@ -1,4 +1,5 @@
 from bluetooth import *
+import time
 class blue_handler:
     def __init__(self):
         self.device_list={}
@@ -19,7 +20,7 @@ class blue_handler:
 
 
     def receive(self, addr):
-        valid_check=3
+        valid_check=10
 
         while valid_check>0:
 
@@ -43,7 +44,8 @@ class blue_handler:
                 print("Retry %s" %valid_check)
                 valid_check-=1
                 sock.close()
-            if recv_data != None 2**31 <= int("{0:b}".format(int(recv_data)),2)  < 2**32:
+                time.sleep(1)
+            if recv_data != None and 2147483648 <= int("{0:b}".format(int(recv_data)),2)  < 4294967296:
                 valid_check=0
             sock.close()
         return recv_data
