@@ -10,12 +10,13 @@ class data_make:
         tmp="{0:b}".format(int(rough))
         print(tmp)
         emergency=int(tmp[1],2)
-        sleep_state=int(tmp[1:3],2)
-        tempor=int(tmp[3:10],2)
+        print(tmp[2:4])
+        sleep_state=int(tmp[2:4],2)
+        tempor=int(tmp[4:11],2)
         tempor= tempor/4+10
-        humid=int(tmp[10:17],2)
-        light=int(tmp[17:24],2)
-        sound=int(tmp[24:],2)
+        humid=int(tmp[11:18],2)
+        light=int(tmp[18:25],2)
+        sound=int(tmp[25:],2)
 
         return [emergency,sleep_state,tempor,humid,light,sound]
 
