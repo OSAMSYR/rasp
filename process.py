@@ -2,7 +2,7 @@ class data_make:
     def __init__(self):
         self.temp_min=0
         self.light_min=0
-        self.temp_th=1
+        self.temp_th=5
         self.light_th=0
 
 
@@ -32,7 +32,7 @@ class data_make:
         state=name
         if abs(list[2]-self.temp_min)>self.temp_th:
             list[1] = 3
-        if abs(list[4]-self.light_min)>self.light_min:
+        if abs(list[4]-self.light_min)>self.light_th:
             list[4]= 1 if list[4]-self.light_min >0 else 0
         for data in list:
             state= state+" "+str(data)

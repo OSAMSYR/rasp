@@ -38,7 +38,8 @@ class blue_handler:
             print('An error occurred : %s ' % err)
             print("Retry %s" %progress_check)
             if progress_check>0:
-                self.find()
+                sock.close()
+                self.receive(addr)
             pass
 
         sock.close()

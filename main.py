@@ -32,7 +32,7 @@ class main:
         for name in self.device_addr.keys():
             file_name="./data/"+name+".txt"
             data_string=""
-            state_string=self.data_handle.state_make(name,self.masked_data.get(name)) + "\n"
+            state_string=state_string+self.data_handle.state_make(name,self.masked_data.get(name)) + "\n"
             for val in self.masked_data.get(name):
                 data_string=data_string+" " + str(val)
             with open(file_name, "a+") as f:
@@ -47,8 +47,9 @@ class main:
     def start(self):
 
         self.initial_process()
-        self.data_processing()
-        self.data_save()
+        while True:
+            self.data_processing()
+            self.data_save()
 
 
 
