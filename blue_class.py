@@ -27,7 +27,7 @@ class blue_handler:
         try:
             sock=BluetoothSocket(RFCOMM )
             sock.connect((addr,self.port))
-            print("done")
+            print("connect %s"%addr)
             recv_data=""
             while recv_data == "":
          

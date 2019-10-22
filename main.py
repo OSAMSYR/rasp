@@ -23,9 +23,7 @@ class main:
         # get data on device_addr
         for name in self.device_addr.keys():
             self.rough_data[name]= self.blue_handle.receive(self.device_addr.get(name))
-            print(self.rough_data)
             self.masked_data[name]=self.data_handle.data_masking(self.rough_data.get(name))
-            print(self.masked_data)
 
         self.data_handle.data_min_making(self.masked_data)
 
@@ -38,8 +36,11 @@ class main:
             for val in self.masked_data.get(name):
                 data_string=data_string+" " + str(val)
             with open(file_name, "a+") as f:
+                print(data_string)
                 f.write(data_string)
-        state_string
+        with open("./state.txt","w") as f:
+            print(state_string)
+            f.write(state_string)
 
 
 

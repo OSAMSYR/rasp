@@ -2,15 +2,13 @@ class data_make:
     def __init__(self):
         self.temp_min=0
         self.light_min=0
-        self.temp_th=0
+        self.temp_th=1
         self.light_th=0
 
 
     def data_masking(self,rough):
         tmp="{0:b}".format(int(rough))
-        print(tmp)
         emergency=int(tmp[1],2)
-        print(tmp[2:4])
         sleep_state=int(tmp[2:4],2)
         tempor=int(tmp[4:11],2)
         tempor= tempor/4+10
