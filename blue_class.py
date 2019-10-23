@@ -1,5 +1,6 @@
 from bluetooth import *
 import time
+
 class blue_handler:
     def __init__(self):
         self.device_list={}

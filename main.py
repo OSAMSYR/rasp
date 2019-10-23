@@ -1,5 +1,6 @@
 from blue_class import blue_handler
 from process import data_make
+import datetime
 class main:
     def __init__(self):
         self.device_addr={}
@@ -11,6 +12,7 @@ class main:
 
         self.blue_handle=blue_handler()
         self.data_handle=data_make()
+        self.put_data_handle=send_host()
 
     def initial_process(self):
         #self.blue_handle.find()
@@ -28,7 +30,8 @@ class main:
         self.data_handle.data_min_making(self.masked_data)
 
     def data_save(self):
-        state_string=""
+        now= datetime.datetime.now().strftime("%Y%m%d%H%M")
+        state_string=now+" "
         for name in self.device_addr.keys():
             file_name="./data/"+name+".txt"
             data_string=""
